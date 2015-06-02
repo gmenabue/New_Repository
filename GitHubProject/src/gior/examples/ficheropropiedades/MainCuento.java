@@ -11,12 +11,18 @@ import java.util.Properties;
 
 
 
-/**
+/**Clase creada para leer de un fichero de propiedades y seleccionar
+ * el idioma adecuado.
  * @author Giordano Menabue
  *
  */
 public class MainCuento {
 	
+	/**
+	 * Método para leer un fichero de propiedades y escribir en un fichero.
+	 * @param fis
+	 * @throws IOException
+	 */
 	public static void fichero_propiedades(FileInputStream fis) throws IOException {
 		
 		
@@ -37,14 +43,17 @@ public class MainCuento {
         
 	}
 	
-	/**
+	/**Método main para ejecutar el programa.
 	 * @param args
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
 		
+		//Creamos un nuevo objeto de FileImputStream
 		FileInputStream fis = null;
 		
+		//Hacemos un switch con distintos casos para determinar que idioma 
+		//escoger según sea el caso.
 		switch (args[1]) {
 		case "IT":
 			System.out.print("Italiano: ");
