@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.List;
 
@@ -18,17 +20,20 @@ public class PracticaBaseDeDatos {
 
 	/**
 	 * @param args
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		
-		List<Empleado> array_empleados = new MiArrayList();
+		List<EmpleadoDTO> array_empleados = new MiArrayList();
 		//Map<Integer, Empleado> map_empleado = new TreeMap<Integer, Empleado>();
-		Empleado empleado = null;
+		EmpleadoDTO empleado = null;
 
 		Connection conn = null;
 		ResultSet rset = null;
 		Statement stmt = null;
+		Savepoint save = null;
+		
 		
 		
 		
@@ -38,11 +43,14 @@ public class PracticaBaseDeDatos {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			//DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver());// método equivalente al anterior
 			//Sea como sea, es, <<oye, si te piden una conexión, se la pides a esa clase!>>
+			
 			conn = DriverManager.getConnection ("jdbc:oracle:thin:@localhost:1521:xe", "HR", "GIOR1987");
 			
 			//Usamos la clase Connection para crear una conexión
   	        stmt = conn.createStatement();
   	        
+  	        conn.setAutoCommit(false);
+  	        save = conn.setSavepoint();
   	        //Creamos un objeto de PreparedStatement para indicar la sentencia
   	        PreparedStatement pstmt = conn.prepareStatement("Select * from employees where salary > 3000 order by salary");
   	        
@@ -67,12 +75,12 @@ public class PracticaBaseDeDatos {
   	    	int MANAGER_ID = rset.getInt(10);
   	    	int DEPARTMENT_ID = rset.getInt(11);
   	    	
-  	    	empleado = new Empleado(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE,
+  	    	empleado = new EmpleadoDTO(EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE,
   	    			JOB_ID, SALARY, COMISSION_PCT, MANAGER_ID, DEPARTMENT_ID);
   	    	
   	    	array_empleados.add(empleado);
   	    	//map_empleado.put(empleado.getSALARY(), empleado);
-		       
+		    conn.commit();  
 		}
 
   	      //System.out.println(map_empleado);
@@ -82,7 +90,9 @@ public class PracticaBaseDeDatos {
 		}
 		catch(Exception e)
 		{
+			conn.rollback(save);
 			e.printStackTrace();
+			
 		}
 		finally //libero recursos, de "adentro a fuera" , ResultSet, Statment, Conexion
 		{

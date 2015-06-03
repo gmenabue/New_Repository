@@ -10,7 +10,7 @@ import java.util.Iterator;
  * @author Giordano Menabue
  *
  */
-public class MiArrayList extends ArrayList<Empleado> {
+public class MiArrayList extends ArrayList<EmpleadoDTO> {
 	
 	/**
 	 * Constructor de la clase MiArrayList
@@ -31,7 +31,7 @@ public class MiArrayList extends ArrayList<Empleado> {
 		String devolver = "";
 		
 		//Iterador para recorrer el String
-		Iterator<Empleado> iterador_empleados = super.iterator();
+		Iterator<EmpleadoDTO> iterador_empleados = super.iterator();
 		while (iterador_empleados.hasNext()) {
 			devolver += iterador_empleados.next()+ "\n";
 			//devolver = devolver + iterador_empleados.next()+ "\n";
