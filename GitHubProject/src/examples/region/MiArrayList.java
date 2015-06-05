@@ -38,7 +38,7 @@ public class MiArrayList extends ArrayList<RegionDAO> {
 		String devolver = "";
 		
 		//Iterador para recorrer el String
-		Iterator<RegionDTO> iterador_empleados = super.iterator();
+		Iterator<RegionDAO> iterador_empleados = super.iterator();
 		while (iterador_empleados.hasNext()) {
 			devolver += iterador_empleados.next()+ "\n";
 			//devolver = devolver + iterador_empleados.next()+ "\n";
