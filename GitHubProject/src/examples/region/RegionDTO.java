@@ -7,8 +7,8 @@ public class RegionDTO {
 	
 	/**
 	 * Construnctor de la clase Región.
-	 * @param rEGION_ID
-	 * @param rEGION_NAME
+	 * @param region_id
+	 * @param region_name
 	 */
 	public RegionDTO(int region_id, String region_name) {
 		super();
@@ -17,31 +17,31 @@ public class RegionDTO {
 	}
 
 	/**
-	 * @return the rEGION_ID
+	 * @return the region_id
 	 */
 	public int getREGION_ID() {
 		return REGION_ID;
 	}
 
 	/**
-	 * @param rEGION_ID the rEGION_ID to set
+	 * @param region_id the region_id to set
 	 */
-	public void setREGION_ID(int rEGION_ID) {
-		REGION_ID = rEGION_ID;
+	public void setREGION_ID(int region_id) {
+		REGION_ID = region_id;
 	}
 
 	/**
-	 * @return the rEGION_NAME
+	 * @return the region_name
 	 */
 	public String getREGION_NAME() {
 		return REGION_NAME;
 	}
 
 	/**
-	 * @param rEGION_NAME the rEGION_NAME to set
+	 * @param region_name the region_name to set
 	 */
-	public void setREGION_NAME(String rEGION_NAME) {
-		REGION_NAME = rEGION_NAME;
+	public void setREGION_NAME(String region_name) {
+		REGION_NAME = region_name;
 	}
 
 	/* (non-Javadoc)
