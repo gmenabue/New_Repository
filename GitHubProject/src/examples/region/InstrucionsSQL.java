@@ -17,4 +17,6 @@ public class InstrucionsSQL {
 	
 	public static final String insertar_region = "INSERT INTO REGIONS (region_id, region_name) VALUES (?,?)";
 
+	
+	public static final String delete_region = "DELETE FROM REGIONS WHERE REGION_ID = ?";
 }

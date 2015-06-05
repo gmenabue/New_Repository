@@ -20,13 +20,23 @@ public class MainRegion {
 	lista_regiones = RegionDAO.recuperarTodos();
 	System.out.println(lista_regiones.toString());
 	
+	
 	RegionDTO region;
-	region = RegionDAO.recuperarPorID(1);
+	region = RegionDAO.recuperarPorID(3);
 	System.out.println(region);
+	
 	
 	RegionDTO nueva_region = new RegionDTO(5, "Oceanía");
 	RegionDAO.insertar_region(nueva_region);
-	System.out.println(nueva_region + "ha sido agregada exitosamente a la base de datos");
+	System.out.println(nueva_region + ": Ha sido agregada exitosamente a la base de datos");
+	
+	
+	/*
+	boolean borrar_region;
+	borrar_region = RegionDAO.delete_region(5);
+	System.out.println("Región eliminada de la base de datos!");
+	*/
+	
 	
 		// TODO Auto-generated method stub
 
