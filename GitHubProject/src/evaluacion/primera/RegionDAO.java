@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase para definir cómo accedemos a los datos.
  * @author Giordano Menabue
  *
  */

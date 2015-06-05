@@ -1,5 +1,9 @@
 package evaluacion.primera;
-
+/**
+ * Clase para construir el dato.
+ * @author Giordano Menabue
+ *
+ */
 public class RegionDTO {
 
 	int REGION_ID = 0;
