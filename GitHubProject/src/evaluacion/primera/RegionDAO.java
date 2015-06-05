@@ -167,7 +167,7 @@ public class RegionDAO {
 			pstmt.setString(2, region3.getREGION_NAME());
 			pstmt.executeQuery();
 			insertado = true;
-			System.out.println(insertado);
+			//System.out.println(insertado);
 			
 			//Hago commit para que los cambios tengan efecto sobre la base de datos.
 			conexion.commit();
@@ -222,7 +222,7 @@ public class RegionDAO {
 			borrado = true;
 			//Hago commit para que los cambios tengan efecto sobre la base de datos.
 			conexion.commit();
-			System.out.println(borrado);
+			//System.out.println(borrado);
 			
 			}
 		catch (ClassNotFoundException | SQLException e)
