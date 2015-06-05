@@ -13,18 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Clase para definir cómo accedemos a los datos.
  * @author Giordano Menabue
  *
  */
 public class RegionDAO {
 	
 	
-	
 	/**
-	 * Método para recuperar todas las regiones
-	 * @return
+	 * Método para recuperar todas las regiones.
+	 * @return Devuelve una lista con todos los datos obtenidos.
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException
 	 */
-	public static List<RegionDTO> recuperarTodos(){
+	public static List<RegionDTO> recuperarTodos()throws ClassNotFoundException, SQLException{
 		List<RegionDTO>lista_region_all = null;
 		RegionDTO region1;
 		Statement stmt = null;
@@ -65,6 +67,7 @@ public class RegionDAO {
 		
 		finally
 		{
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
 			
@@ -75,10 +78,12 @@ public class RegionDAO {
 	
 
 	/**
-	 * Método para recuperar las regiones por ID
-	 * @return
+	 * Método para recuperar las regiones por ID.
+	 * @return Devuelvo un objeto de RegionDTO.
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException
 	 */
-	public static RegionDTO recuperarPorID(int region_id){
+	public static RegionDTO recuperarPorID(int region_id)throws ClassNotFoundException, SQLException{
 		
 		RegionDTO region2 = null;
 		Statement stmt = null;
@@ -120,6 +125,7 @@ public class RegionDAO {
 		
 		finally
 		{
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
 			
@@ -131,10 +137,13 @@ public class RegionDAO {
 	
 	
 	/**
-	 * Metodo para insertar regiones a la base de datos
+	 * Método para insertar regiones a la base de datos.
 	 * @param region3
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException
 	 */
-	public static void insertar_region(RegionDTO region3){
+	public static boolean insertar_region(RegionDTO region3)throws ClassNotFoundException, SQLException{
+		boolean insertado = false;
 		Statement stmt = null;
 		Connection conexion = null;
 		ResultSet rset = null;
@@ -169,8 +178,10 @@ public class RegionDAO {
 		
 		finally
 		{
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
+		return insertado;
 			
 		
 	}
@@ -178,10 +189,12 @@ public class RegionDAO {
 	
 	
 	/**
-	 * Método para borrar regiones de la base de datos!
+	 * Método para borrar regiones de la base de datos.
 	 * @param region3
+	 * @throws ClassNotFoundException 
+	 * @throws SQLException
 	 */
-	public static boolean delete_region(int region_id){
+	public static boolean delete_region(int region_id)throws ClassNotFoundException, SQLException{
 		boolean borrado = false;
 		Statement stmt = null;
 		Connection conexion = null;
@@ -216,7 +229,7 @@ public class RegionDAO {
 		
 		finally
 		{
-			//
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
 		return borrado;
@@ -227,9 +240,9 @@ public class RegionDAO {
 	
 	
 	/**
-	 * Metodo para componer los objetos y anadir sus valores.
+	 * Método para componer los objetos y anadir sus valores.
 	 * @param rset
-	 * @return
+	 * @return Devuleve un objeto de RegionDTO.
 	 * @throws SQLException
 	 */
 	private static RegionDTO componerObjeto(ResultSet rset) throws SQLException{
@@ -239,6 +252,7 @@ public class RegionDAO {
 		int REGION_ID = rset.getInt(1);
 		String REGION_NAME = rset.getString(2);
 		
+		//Creo el objeto con los valores obtenidos
 		region = new RegionDTO(REGION_ID, REGION_NAME);
 		
 		return region;

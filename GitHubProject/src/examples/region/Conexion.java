@@ -19,7 +19,6 @@ public class Conexion {
 	//implementar el patron single tone (solo se va a tener un objeto de esa clase)
 	
 	
-	Connection connection ;
 	static ResultSet rset ;
 	static Statement stmt ;
 	static Savepoint save ;
@@ -89,23 +88,6 @@ public static  Connection obtenerConexion () throws ClassNotFoundException, SQLE
 		if (stmt != null)	{ try {	stmt.close(); } catch (Exception e2) { e2.printStackTrace(); }}
 		if (conn != null) 	{ try { conn.close(); } catch (Exception e3) { e3.printStackTrace(); }}
 	}
-	
-
-
-
-
-/**
- * @param args
- */
-public static void main(String[] args) {
-	
-	
-	
-	
-	
-	// TODO Auto-generated method stub
-
-}
 
 }
 
