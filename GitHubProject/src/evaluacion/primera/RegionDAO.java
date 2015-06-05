@@ -19,7 +19,6 @@ import java.util.List;
 public class RegionDAO {
 	
 	
-	
 	/**
 	 * Método para recuperar todas las regiones
 	 * @return
@@ -65,6 +64,7 @@ public class RegionDAO {
 		
 		finally
 		{
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
 			
@@ -120,6 +120,7 @@ public class RegionDAO {
 		
 		finally
 		{
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
 			
@@ -169,6 +170,7 @@ public class RegionDAO {
 		
 		finally
 		{
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
 			
@@ -216,7 +218,7 @@ public class RegionDAO {
 		
 		finally
 		{
-			//
+			//Liberamos los recursos!
 			Conexion.liberarRecursos(conexion, stmt, rset);
 		}
 		return borrado;
@@ -239,6 +241,7 @@ public class RegionDAO {
 		int REGION_ID = rset.getInt(1);
 		String REGION_NAME = rset.getString(2);
 		
+		//Creo el objeto con los valores obtenidos
 		region = new RegionDTO(REGION_ID, REGION_NAME);
 		
 		return region;

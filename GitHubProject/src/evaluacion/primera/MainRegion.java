@@ -22,14 +22,14 @@ public class MainRegion {
 	
 	
 	RegionDTO region;
-	region = RegionDAO.recuperarPorID(3);
+	region = RegionDAO.recuperarPorID(5);
 	System.out.println(region);
 	
-	
+	/*
 	RegionDTO nueva_region = new RegionDTO(5, "Oceanía");
 	RegionDAO.insertar_region(nueva_region);
 	System.out.println(nueva_region + ": Ha sido agregada exitosamente a la base de datos");
-	
+	*/
 	
 	/*
 	boolean borrar_region;
